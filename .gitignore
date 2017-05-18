@@ -1,0 +1,4 @@
+env_set.sh
+lunch_bot.log
+__pycache__/
+plugins/__pycache__/
