@@ -7,5 +7,5 @@ API_TOKEN = os.environ['SLACK_API_TOKEN']
 default_reply = "ごめん。わからない。"
 
 PLUGINS = [
-    'plugins',
+    'plugins.bing_search',
 ]
