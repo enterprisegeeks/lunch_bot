@@ -6,6 +6,7 @@ import requests
 import json
 import re
 import os
+import urllib.parse
 
 @respond_to('.*', re.IGNORECASE)
 def res(message):
@@ -27,8 +28,9 @@ def call_bing_search_api(query):
         'offset': 0,
     }
     response = requests.get(url ,headers = headers, params = params)
-    json = response.json()
-    return json.get('webPages').get('value')[0]['url']
+    bing_res_url = response.json().get('webPages').get('value')[0]['url']
+    encoded_url = re.search("http.*&r=(http.*)&p=.*", bing_res_url).group(1)
+    return urllib.parse.unquote(encoded_url)
 
 # 動作確認
 if __name__ == '__main__':
